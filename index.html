@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decentralized Student Identity System</title>
+    <meta name="description" content="Secure, decentralized student identity and certificate verification system.">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <nav>
+            <div class="logo">DECENTRALIZED STUDENT IDENTITY SYSTEM</div>
+            <div class="nav-links">
+                <a class="nav-link active" id="nav-home">Home</a>
+                <a class="nav-link" id="nav-upload">College Portal</a>
+                <a class="nav-link" id="nav-verify">Verifier Portal</a>
+            </div>
+        </nav>
+
+        <main id="app-content">
+            <!-- Home Section -->
+            <section id="home-view" class="animate-fade-in">
+                <div style="text-align: center; max-width: 800px; margin: 4rem auto;">
+                    <h1 style="font-size: 3.5rem; margin-bottom: 1rem;">Digital trust for every academic achievement.
+                    </h1>
+                    <p style="color: var(--text-muted); font-size: 1.25rem; margin-bottom: 3rem;">A secure, tamper-proof
+                        system for managing and verifying student certificates using cryptographic hashing.</p>
+                    <div style="display: flex; gap: 1.5rem; justify-content: center;">
+                        <button class="btn btn-primary" onclick="document.getElementById('nav-upload').click()">Issue
+                            Certificate</button>
+                        <button class="btn btn-secondary" onclick="document.getElementById('nav-verify').click()">Verify
+                            Integrity</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Upload Section -->
+            <section id="upload-view" class="hidden animate-fade-in">
+                <div class="card" style="max-width: 600px; margin: 0 auto;">
+                    <h2>Issue New Certificate</h2>
+                    <form id="upload-form">
+                        <div class="form-group">
+                            <label>Student Full Name</label>
+                            <input type="text" id="student-name" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Register Number / ID</label>
+                            <input type="text" id="register-id" placeholder="REG123456" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Certificate Name</label>
+                            <input type="text" id="cert-name" placeholder="Bachelor of Science" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Issue Date</label>
+                            <input type="date" id="issue-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Institution / Issuer</label>
+                            <input type="text" id="issuer-name" placeholder="University of Technology" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Upload Certificate File (PDF or Image)</label>
+                            <div class="upload-area" id="drop-zone-upload">
+                                <p id="file-name-display">Click or drag & drop certificate here</p>
+                                <input type="file" id="cert-file" style="display: none;" accept=".pdf,image/*">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Seal & Record
+                            Certificate</button>
+                    </form>
+                    <div id="upload-result" class="result-box"></div>
+                </div>
+            </section>
+
+            <!-- Verify Section -->
+            <section id="verify-view" class="hidden animate-fade-in">
+                <div class="card" style="max-width: 600px; margin: 0 auto;">
+                    <h2>Verify Certificate</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 2rem;">Upload a digital copy of the certificate
+                        to verify its authenticity and metadata.</p>
+                    <div class="form-group">
+                        <div class="upload-area" id="drop-zone-verify">
+                            <p id="verify-file-display">Select certificate file to verify</p>
+                            <input type="file" id="verify-file" style="display: none;" accept=".pdf,image/*">
+                        </div>
+                    </div>
+                    <button id="btn-verify" class="btn btn-primary" style="width: 100%;">Verify Authenticity</button>
+
+                    <div id="verify-result" class="result-box">
+                        <!-- Verification details will be injected here -->
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script type="module" src="./main.js"></script>
+</body>
+
+</html>
