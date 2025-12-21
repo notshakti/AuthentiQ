@@ -61,7 +61,8 @@ app.get('/api/certificates/:hash', async (req, res) => {
 });
 
 // Catch-all route for SPA
-app.get('*', (req, res) => {
+// ✅ Using a Regex object bypasses the string parser error
+app.get(/.*/, (req, res) => {
     res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
