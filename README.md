@@ -1,95 +1,100 @@
-🔐 AuthentiQ
-Digital Trust for Academic Identity
+# 🔐 AuthentiQ  
+### Digital Trust for Academic Identity
 
-AuthentiQ is a DigiLocker-inspired but trust-minimized certificate verification platform that enables institutions to issue cryptographically verifiable certificates and allows anyone to instantly verify authenticity using file-based hashing.
+AuthentiQ is a **DigiLocker-inspired but trust-minimized certificate verification platform** that enables institutions to issue cryptographically verifiable certificates and allows anyone to instantly verify authenticity using **file-based hashing**.
 
-Unlike traditional document lockers, AuthentiQ focuses on tamper detection, decentralized verification logic, and zero-trust validation, making it ideal for academic and institutional use cases.
+Unlike traditional document lockers, AuthentiQ focuses on **tamper detection**, **decentralized verification logic**, and **zero-trust validation**, making it ideal for academic and institutional use cases.
 
-🚀 Key Features
-🎓 Certificate Issuance (College Portal)
+---
 
-Upload academic certificates (PDF / JPG / PNG)
+## 🚀 Key Features
 
-Cryptographic SHA-256 hash generation
+### 🎓 Certificate Issuance (College Portal)
+- Upload academic certificates (**PDF / JPG / PNG**)
+- Cryptographic **SHA-256 hash generation**
+- Metadata binding:
+  - Student name  
+  - Register number  
+  - Institution  
+  - Issue date
+- Secure storage in **MongoDB with indexed hash lookup**
+- **Duplicate prevention** using hash-level uniqueness
 
-Metadata binding (student name, register number, institution, issue date)
+---
 
-Secure storage in MongoDB with indexed hash lookup
+### ✅ Certificate Verification (Verifier Portal)
+- File-based verification (**no manual hash input**)
+- Instant authenticity check:
+  - **VERIFIED** → Certificate exists & untampered  
+  - **TAMPERED** → Hash not found or modified  
+  - **ERROR** → Invalid request or system issue
+- Deterministic backend responses (**always valid JSON**)
 
-Duplicate prevention using hash-level uniqueness
+---
 
-✅ Certificate Verification (Verifier Portal)
+## 🛡️ Trust-First Design
+- No reliance on user identity or login
+- Verification works without knowing the issuer
+- Frontend never decides authenticity  
+- Backend is the **single source of truth**
 
-File-based verification (no manual hash input)
+---
 
-Instant authenticity check:
+## 🧠 How AuthentiQ Is Different From DigiLocker
 
-VERIFIED → Certificate exists & untampered
+| DigiLocker | AuthentiQ |
+|----------|-----------|
+| Centralized government locker | Trust-minimized verification |
+| Login-based access | File-based verification |
+| Document storage | Cryptographic proof |
+| No tamper detection | Hash-based integrity check |
+| Issuer-controlled | Verifier-independent |
 
-TAMPERED → Hash not found / modified
+---
 
-ERROR → Invalid request or system issue
+## 🧩 Tech Stack
 
-Deterministic backend responses (always valid JSON)
+### Frontend
+- HTML, CSS (custom premium UI)
+- Vanilla JavaScript
+- Vite
 
-🛡️ Trust-First Design
+### Backend
+- Node.js
+- Express.js
+- MongoDB Atlas
+- Mongoose ODM
 
-No reliance on user identity or login
+### Security
+- SHA-256 hashing (Web Crypto API)
+- Unique indexed hash enforcement
+- Deterministic API responses
 
-Verification works even without knowing the issuer
+---
 
-Frontend never decides authenticity — backend is source of truth
+## 🏗️ System Architecture
 
-🧠 How AuthentiQ is Different from DigiLocker
-DigiLocker	AuthentiQ
-Centralized government locker	Trust-minimized verification
-Login-based access	File-based verification
-Document storage	Cryptographic proof
-No tamper detection	Hash-based integrity check
-Issuer-controlled	Verifier-independent
-🧩 Tech Stack
-
-Frontend
-
-HTML, CSS (custom premium UI)
-
-Vanilla JavaScript
-
-Vite (dev server & build)
-
-Backend
-
-Node.js
-
-Express.js
-
-MongoDB Atlas
-
-Mongoose ODM
-
-Security
-
-SHA-256 hashing (Web Crypto API)
-
-Unique indexed hash enforcement
-
-Deterministic API responses
-
-🏗️ System Architecture (High Level)
 Certificate File
-      ↓
+↓
 SHA-256 Hash (Frontend)
-      ↓
+↓
 MongoDB (Indexed by hash)
-      ↓
-Verification Request
-      ↓
+↓
+Verification API
+↓
 VERIFIED / TAMPERED / ERROR
 
-⚙️ Installation & Setup
-1️⃣ Clone the repository
+
+---
+
+## ⚙️ Installation & Setup
+
+### 1️⃣ Clone the repository
+```bash
 git clone https://github.com/notshakti/AuthentiQ.git
 cd AuthentiQ
+
+
 
 2️⃣ Install dependencies
 npm install
